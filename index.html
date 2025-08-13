@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go: A Revolução da Concorrência</title>
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -17,6 +15,8 @@
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            /* Adiciona espaço no topo para o menu fixo não cobrir o conteúdo */
+            padding-top: 64px; 
         }
         
         .hero-gradient {
@@ -78,116 +78,72 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- introduçao -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-2xl font-bold gradient-text">Go Wins</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#comparativo" class="text-gray-600 hover:text-cyan-600 font-semibold transition-colors">Comparativo</a>
+                    <a href="#guerrilha" class="text-gray-600 hover:text-cyan-600 font-semibold transition-colors">Go vs Outros</a>
+                    <a href="#molho-secreto" class="text-gray-600 hover:text-cyan-600 font-semibold transition-colors">O Molho Secreto</a>
+                    <a href="#performance" class="text-gray-600 hover:text-cyan-600 font-semibold transition-colors">Performance</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <header class="hero-gradient text-center py-24 px-6 shadow-2xl">
         <div class="max-w-5xl mx-auto">
             <div class="flex justify-center mb-8">
-                <svg class="w-24 h-24 drop-shadow-xl" viewBox="0 0 252 253" fill="white" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M126.062 14.341C111.414 14.341 99.493 26.262 99.493 40.91V99.493H40.91C26.262 99.493 14.341 111.414 14.341 126.062C14.341 140.71 26.262 152.631 40.91 152.631H99.493V211.213C99.493 225.861 111.414 237.782 126.062 237.782C140.71 237.782 152.631 225.861 152.631 211.213V152.631H211.213C225.861 152.631 237.782 140.71 237.782 126.062C237.782 111.414 225.861 99.493 211.213 99.493H152.631V40.91C152.631 26.262 140.71 14.341 126.062 14.341Z"/>
-                    <circle cx="152.631" cy="75.203" r="18.108" fill="#1f2937"/>
-                    <circle cx="99.493" cy="75.203" r="18.108" fill="#1f2937"/>
-                </svg>
+                <svg class="w-24 h-24 drop-shadow-xl" viewBox="0 0 252 253" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M126.062 14.341C111.414 14.341 99.493 26.262 99.493 40.91V99.493H40.91C26.262 99.493 14.341 111.414 14.341 126.062C14.341 140.71 26.262 152.631 40.91 152.631H99.493V211.213C99.493 225.861 111.414 237.782 126.062 237.782C140.71 237.782 152.631 225.861 152.631 211.213V152.631H211.213C225.861 152.631 237.782 140.71 237.782 126.062C237.782 111.414 225.861 99.493 211.213 99.493H152.631V40.91C152.631 26.262 140.71 14.341 126.062 14.341Z"/><circle cx="152.631" cy="75.203" r="18.108" fill="#1f2937"/><circle cx="99.493" cy="75.203" r="18.108" fill="#1f2937"/></svg>
             </div>
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6">
-                Go é o <span class="text-yellow-300">Futuro</span>
-            </h1>
-            <p class="text-xl md:text-2xl font-semibold text-white/90 mb-8">
-                A linguagem que redefiniu a concorrência
-            </p>
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6">Go é o <span class="text-yellow-300">Futuro</span></h1>
+            <p class="text-xl md:text-2xl font-semibold text-white/90 mb-8">A linguagem que redefiniu a concorrência</p>
             <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl text-white">
-                    <div class="text-3xl font-black text-yellow-300">1000x</div>
-                    <div class="text-sm">Mais leve que threads</div>
-                </div>
-                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl text-white">
-                    <div class="text-3xl font-black text-green-300">2KB</div>
-                    <div class="text-sm">Stack inicial</div>
-                </div>
-                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl text-white">
-                    <div class="text-3xl font-black text-blue-300">10M+</div>
-                    <div class="text-sm">Goroutines simultâneas</div>
-                </div>
+                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl text-white"><div class="text-3xl font-black text-yellow-300">1000x</div><div class="text-sm">Mais leve que threads</div></div>
+                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl text-white"><div class="text-3xl font-black text-green-300">2KB</div><div class="text-sm">Stack inicial</div></div>
+                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl text-white"><div class="text-3xl font-black text-blue-300">10M+</div><div class="text-sm">Goroutines simultâneas</div></div>
             </div>
-            <a href="https://go.dev/tour/" target="_blank" class="bg-white text-cyan-700 font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-100 transition-all shadow-xl">
-                🚀 Comece Agora
-            </a>
+            <a href="https://go.dev/tour/" target="_blank" class="bg-white text-cyan-700 font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-100 transition-all shadow-xl">🚀 Comece Agora</a>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto p-6 md:p-12">
 
-        <!-- Problema vs Solução -->
-        <section class="mb-20">
+        <section id="problema" class="mb-20 pt-16 -mt-16">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold gradient-text mb-4">O Problema das Threads Tradicionais</h2>
                 <p class="text-xl text-gray-600">Complexidade desnecessária na era multi-core</p>
             </div>
-            
             <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Problema -->
                 <div class="space-y-6">
-                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
-                        <h4 class="font-bold text-red-800 mb-2">😵 Deadlocks e Race Conditions</h4>
-                        <p class="text-red-700">Bugs impossíveis de detectar que aparecem apenas em produção</p>
-                    </div>
-                    <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg">
-                        <h4 class="font-bold text-orange-800 mb-2">🐌 Overhead Brutal</h4>
-                        <p class="text-orange-700">Threads consomem MB de memória e são caras para criar/destruir</p>
-                    </div>
-                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg">
-                        <h4 class="font-bold text-yellow-800 mb-2">🤯 Complexidade Exponencial</h4>
-                        <p class="text-yellow-700">Gerenciamento manual de locks, mutexes e sincronização</p>
-                    </div>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg"><h4 class="font-bold text-red-800 mb-2">😵 Deadlocks e Race Conditions</h4><p class="text-red-700">Bugs impossíveis de detectar que aparecem apenas em produção</p></div>
+                    <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg"><h4 class="font-bold text-orange-800 mb-2">🐌 Overhead Brutal</h4><p class="text-orange-700">Threads consomem MB de memória e são caras para criar/destruir</p></div>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg"><h4 class="font-bold text-yellow-800 mb-2">🤯 Complexidade Exponencial</h4><p class="text-yellow-700">Gerenciamento manual de locks, mutexes e sincronização</p></div>
                 </div>
-                
-                <!-- Solução usando Go -->
                 <div class="bg-gradient-to-br from-cyan-50 to-blue-50 p-8 rounded-2xl border border-cyan-200">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mr-4">
-                            <span class="text-2xl">🚀</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900">A Revolução Go</h3>
-                    </div>
+                    <div class="flex items-center mb-6"><div class="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mr-4"><span class="text-2xl">🚀</span></div><h3 class="text-2xl font-bold text-gray-900">A Revolução Go</h3></div>
                     <div class="space-y-4">
-                        <div class="flex items-center text-green-700">
-                            <span class="mr-3">✅</span>
-                            <span><strong>Goroutines:</strong> Ultra-leves (2KB vs 8MB)</span>
-                        </div>
-                        <div class="flex items-center text-green-700">
-                            <span class="mr-3">✅</span>
-                            <span><strong>Channels:</strong> Comunicação segura por design</span>
-                        </div>
-                        <div class="flex items-center text-green-700">
-                            <span class="mr-3">✅</span>
-                            <span><strong>Race Detector:</strong> Bugs encontrados automaticamente</span>
-                        </div>
-                        <div class="flex items-center text-green-700">
-                            <span class="mr-3">✅</span>
-                            <span><strong>Sintaxe simples:</strong> Uma linha para concorrência</span>
-                        </div>
+                        <div class="flex items-center text-green-700"><span class="mr-3">✅</span><span><strong>Goroutines:</strong> Ultra-leves (2KB vs 8MB)</span></div>
+                        <div class="flex items-center text-green-700"><span class="mr-3">✅</span><span><strong>Channels:</strong> Comunicação segura por design</span></div>
+                        <div class="flex items-center text-green-700"><span class="mr-3">✅</span><span><strong>Race Detector:</strong> Bugs encontrados automaticamente</span></div>
+                        <div class="flex items-center text-green-700"><span class="mr-3">✅</span><span><strong>Sintaxe simples:</strong> Uma linha para concorrência</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Exemplo Prático -->
-        <section class="mb-20">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900">Veja a Diferença na Prática</h2>
-            </div>
-            
+        <section id="comparativo" class="mb-20 pt-16 -mt-16">
+            <div class="text-center mb-12"><h2 class="text-3xl font-bold text-gray-900">Veja a Diferença na Prática</h2></div>
             <div class="grid lg:grid-cols-2 gap-8">
-                <!-- exemplo com C++  -->
                 <div>
                     <h3 class="text-xl font-bold text-red-600 mb-4">❌ C++ Tradicional (Complexo)</h3>
                     <pre><code class="language-cpp"><span class="comment">// Verboso, perigoso, difícil</span>
 <span class="keyword">#include</span> <span class="string">&lt;thread&gt;</span>
 <span class="keyword">#include</span> <span class="string">&lt;mutex&gt;</span>
 <span class="keyword">#include</span> <span class="string">&lt;queue&gt;</span>
-
 <span class="type">std::mutex</span> mtx;
 <span class="type">std::queue</span>&lt;<span class="type">int</span>&gt; jobs;
-
 <span class="type">void</span> <span class="function">worker</span>() {
     <span class="keyword">while</span>(<span class="keyword">true</span>) {
         <span class="type">std::lock_guard</span>&lt;<span class="type">std::mutex</span>&gt; lock(mtx);
@@ -198,21 +154,16 @@
         }
     }
 }
-
 <span class="comment">// Gerenciar threads manualmente</span>
 <span class="type">std::thread</span> workers[<span class="number">4</span>];
 <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i < <span class="number">4</span>; ++i)
     workers[i] = <span class="type">std::thread</span>(worker);</code></pre>
                 </div>
-                
-                <!-- Go Simples -->
                 <div>
                     <h3 class="text-xl font-bold text-green-600 mb-4">✅ Go (Elegante)</h3>
                     <pre><code class="language-go"><span class="comment">// Simples, seguro, poderoso</span>
 <span class="keyword">package</span> main
-
 <span class="keyword">import</span> <span class="string">"fmt"</span>
-
 <span class="keyword">func</span> <span class="function">worker</span>(jobs <-<span class="keyword">chan</span> <span class="type">int</span>, results <span class="keyword">chan</span><- <span class="type">int</span>) {
     <span class="keyword">for</span> job := <span class="keyword">range</span> jobs {
         <span class="comment">// Processa job</span>
@@ -220,22 +171,18 @@
         results <- result
     }
 }
-
 <span class="keyword">func</span> <span class="function">main</span>() {
     jobs := <span class="function">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">100</span>)
     results := <span class="function">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">100</span>)
-    
     <span class="comment">// Inicia 4 workers</span>
     <span class="keyword">for</span> w := <span class="number">0</span>; w < <span class="number">4</span>; w++ {
         <span class="keyword">go</span> <span class="function">worker</span>(jobs, results)
     }
-    
     <span class="comment">// Envia 100 jobs</span>
     <span class="keyword">for</span> j := <span class="number">0</span>; j < <span class="number">100</span>; j++ {
         jobs <- j
     }
     <span class="function">close</span>(jobs)
-    
     <span class="comment">// Coleta resultados</span>
     <span class="keyword">for</span> r := <span class="number">0</span>; r < <span class="number">100</span>; r++ {
         <-results
@@ -245,172 +192,92 @@
             </div>
         </section>
 
-        <!-- Performance -->
-        <section class="mb-20">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold gradient-text mb-4">Performance que Impressiona</h2>
+        <section id="guerrilha" class="mb-20 pt-16 -mt-16">
+            <div class="text-center mb-12"><h2 class="text-3xl font-bold gradient-text mb-4">A Escolha Inteligente: Go vs Outros</h2></div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-xl card-hover border-t-4 border-cyan-500">
+                    <h3 class="text-2xl font-bold mb-4">⚡ Go vs. Rust</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">Enquanto Rust se orgulha de sua segurança em tempo de compilação, ele impõe uma complexidade que pode tornar o desenvolvimento lento e frustrante.</p>
+                    <p class="text-lg text-gray-700 mt-4 font-semibold bg-green-50 p-4 rounded-lg border-l-4 border-green-400">Go adota uma filosofia mais pragmática. Em vez de forçar o programador a lutar contra o compilador, Go torna a programação concorrente tão simples com <strong>goroutines e canais</strong> que a probabilidade de erros diminui drasticamente. E para os casos raros em que erros possam surgir, Go oferece uma ferramenta poderosa: o <strong>Race Detector</strong>.</p>
+                    <p class="text-xl mt-6 font-black text-center text-cyan-700">A escolha é sua: prefere produzir ou lutar com o compilador?</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl card-hover border-t-4 border-purple-500">
+                    <h3 class="text-2xl font-bold mb-4">🎯 Go vs. Elixir</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">Elixir é excepcional para sistemas distribuídos com altíssima tolerância a falhas, uma herança de seu uso em telecomunicações.</p>
+                    <p class="text-lg text-gray-700 mt-4 font-semibold bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">No entanto, essa arquitetura é um <strong>overkill</strong> para a maioria das aplicações web e microsserviços modernos. Go oferece a performance e a simplicidade ideais para a vasta maioria dos backends, sem o peso de uma arquitetura de nicho.</p>
+                    <p class="text-xl mt-6 font-black text-center text-purple-700">Não use um canhão para matar uma formiga. Use a ferramenta certa.</p>
+                </div>
             </div>
-            
+        </section>
+        
+        <section id="molho-secreto" class="mb-20 pt-16 -mt-16 bg-gray-100 rounded-3xl p-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold gradient-text mb-4">O Molho Secreto de Go</h2>
+                <p class="text-xl text-gray-600">Por que Goroutines são tão mágicas?</p>
+            </div>
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-2xl">
+                <div class="text-center text-5xl mb-6">🧙‍♂️</div>
+                <h3 class="text-2xl font-bold text-center mb-4">O Escalonador (Scheduler) N x M</h3>
+                <p class="text-lg text-gray-700 leading-relaxed text-center">A mágica por trás da eficiência das goroutines está no <strong>escalonador</strong> de Go e no modelo de implementação <strong>N x M</strong>.</p>
+                <p class="mt-4 text-lg bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">Isso significa que o Go gerencia <span class="font-bold text-blue-800">N goroutines</span> (milhares ou milhões) em apenas <span class="font-bold text-blue-800">M threads</span> do sistema operacional. É por isso que elas são tão leves e rápidas, ao contrário dos threads do C++ e Rust, que são 'caros' por mapearem 1 para 1 com os threads do sistema.</p>
+            </div>
+        </section>
+
+        <section id="performance" class="mb-20 pt-16 -mt-16">
+            <div class="text-center mb-12"><h2 class="text-3xl font-bold gradient-text mb-4">Performance que Impressiona</h2></div>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white p-8 rounded-2xl shadow-xl card-hover">
                     <h3 class="text-xl font-bold mb-6 text-center">Tempo de Criação</h3>
                     <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Java Threads</span>
-                                <span class="text-red-600 font-bold">1-2ms</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="performance-bar bg-red-500 rounded-full" style="--width: 100%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Go Goroutines</span>
-                                <span class="text-green-600 font-bold">~200ns ⚡</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="performance-bar bg-green-500 rounded-full" style="--width: 5%;"></div>
-                            </div>
-                        </div>
+                        <div><div class="flex justify-between mb-2"><span>Java Threads</span><span class="text-red-600 font-bold">1-2ms</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="performance-bar bg-red-500 rounded-full" style="--width: 100%;"></div></div></div>
+                        <div><div class="flex justify-between mb-2"><span>Go Goroutines</span><span class="text-green-600 font-bold">~200ns ⚡</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="performance-bar bg-green-500 rounded-full" style="--width: 5%;"></div></div></div>
                     </div>
                 </div>
-
                 <div class="bg-white p-8 rounded-2xl shadow-xl card-hover">
                     <h3 class="text-xl font-bold mb-6 text-center">Uso de Memória</h3>
                     <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Thread Tradicional</span>
-                                <span class="text-red-600 font-bold">2-8MB</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="performance-bar bg-red-500 rounded-full" style="--width: 100%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Go Goroutine</span>
-                                <span class="text-green-600 font-bold">2KB ⚡</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="performance-bar bg-green-500 rounded-full" style="--width: 2%;"></div>
-                            </div>
-                        </div>
+                        <div><div class="flex justify-between mb-2"><span>Thread Tradicional</span><span class="text-red-600 font-bold">2-8MB</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="performance-bar bg-red-500 rounded-full" style="--width: 100%;"></div></div></div>
+                        <div><div class="flex justify-between mb-2"><span>Go Goroutine</span><span class="text-green-600 font-bold">2KB ⚡</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="performance-bar bg-green-500 rounded-full" style="--width: 2%;"></div></div></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Casos de Uso -->
-        <section class="mb-20">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold gradient-text mb-4">Gigantes que Confiam em Go</h2>
-            </div>
-            
+        <section id="casos-de-uso" class="mb-20 pt-16 -mt-16">
+            <div class="text-center mb-12"><h2 class="text-3xl font-bold gradient-text mb-4">Gigantes que Confiam em Go</h2></div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-lg card-hover text-center">
-                    <div class="text-3xl mb-3">🐳</div>
-                    <h3 class="font-bold">Docker</h3>
-                    <p class="text-gray-600 text-sm">Containerização mundial</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg card-hover text-center">
-                    <div class="text-3xl mb-3">☸️</div>
-                    <h3 class="font-bold">Kubernetes</h3>
-                    <p class="text-gray-600 text-sm">Orquestração cloud</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg card-hover text-center">
-                    <div class="text-3xl mb-3">🚗</div>
-                    <h3 class="font-bold">Uber</h3>
-                    <p class="text-gray-600 text-sm">Microservices em escala</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg card-hover text-center">
-                    <div class="text-3xl mb-3">🎮</div>
-                    <h3 class="font-bold">Twitch</h3>
-                    <p class="text-gray-600 text-sm">Chat real-time</p>
-                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover text-center"><div class="text-3xl mb-3">🐳</div><h3 class="font-bold">Docker</h3><p class="text-gray-600 text-sm">Containerização mundial</p></div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover text-center"><div class="text-3xl mb-3">☸️</div><h3 class="font-bold">Kubernetes</h3><p class="text-gray-600 text-sm">Orquestração cloud</p></div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover text-center"><div class="text-3xl mb-3">🚗</div><h3 class="font-bold">Uber</h3><p class="text-gray-600 text-sm">Microservices em escala</p></div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover text-center"><div class="text-3xl mb-3">🎮</div><h3 class="font-bold">Twitch</h3><p class="text-gray-600 text-sm">Chat real-time</p></div>
             </div>
         </section>
 
-        <!-- Por que Go -->
         <section class="mb-20">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold gradient-text mb-4">Por que Go Domina?</h2>
-            </div>
+            <div class="text-center mb-12"><h2 class="text-3xl font-bold gradient-text mb-4">Por que Go Domina?</h2></div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
-                    <div class="text-cyan-500 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <h4 class="font-bold mb-2">Velocidade</h4>
-                    <p class="text-gray-600 text-sm">Compilado para código nativo</p>
-                </div>
-                <div class="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
-                    <div class="text-cyan-500 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                    </div>
-                    <h4 class="font-bold mb-2">Simplicidade</h4>
-                    <p class="text-gray-600 text-sm">Apenas 25 palavras-chave</p>
-                </div>
-                <div class="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
-                    <div class="text-cyan-500 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                    </div>
-                    <h4 class="font-bold mb-2">Ferramentas</h4>
-                    <p class="text-gray-600 text-sm">Ecossistema completo incluso</p>
-                </div>
-                <div class="text-center p-6 bg-white rounded-xl shadow-lg card-hover">
-                    <div class="text-cyan-500 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 009-9m-9 9a9 9 0 00-9-9" />
-                        </svg>
-                    </div>
-                    <h4 class="font-bold mb-2">Escala</h4>
-                    <p class="text-gray-600 text-sm">Milhões de goroutines</p>
-                </div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg card-hover"><div class="text-cyan-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div><h4 class="font-bold mb-2">Velocidade</h4><p class="text-gray-600 text-sm">Compilado para código nativo</p></div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg card-hover"><div class="text-cyan-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg></div><h4 class="font-bold mb-2">Simplicidade</h4><p class="text-gray-600 text-sm">Apenas 25 palavras-chave</p></div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg card-hover"><div class="text-cyan-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div><h4 class="font-bold mb-2">Ferramentas</h4><p class="text-gray-600 text-sm">Ecossistema completo incluso</p></div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-lg card-hover"><div class="text-cyan-500 mb-4"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 009-9m-9 9a9 9 0 00-9-9" /></svg></div><h4 class="font-bold mb-2">Escala</h4><p class="text-gray-600 text-sm">Milhões de goroutines</p></div>
             </div>
         </section>
 
-        <!-- tentativa de venda da linguagem   -->
         <section class="text-center bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 text-white p-12 rounded-2xl shadow-2xl mb-16">
             <h2 class="text-4xl font-extrabold mb-4">Não Fique para Trás</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Enquanto outros lutam com threads complexas, você pode estar construindo o futuro com Go. 
-                <strong>A revolução começou.</strong>
-            </p>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Enquanto outros lutam com threads complexas, você pode estar construindo o futuro com Go. <strong>A revolução começou.</strong></p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://go.dev/tour/" target="_blank" class="bg-white text-cyan-700 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-100 transition-all">
-                    🚀 Tour Oficial
-                </a>
-                <a href="https://go.dev/doc/" target="_blank" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-cyan-700 transition-all">
-                    📚 Documentação
-                </a>
+                <a href="https://go.dev/tour/" target="_blank" class="bg-white text-cyan-700 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-100 transition-all">🚀 Tour Oficial</a>
+                <a href="https://go.dev/doc/" target="_blank" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-cyan-700 transition-all">📚 Documentação</a>
             </div>
         </section>
 
-        <!-- componentes -->
         <section class="text-center bg-gray-100 rounded-2xl p-8">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Criado pela Equipe</h2>
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="text-center">
-                    <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center text-white text-lg font-bold mx-auto mb-3">CR</div>
-                    <h3 class="font-bold">Caio Ribeiro</h3>
-                </div>
-                <div class="text-center">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white text-lg font-bold mx-auto mb-3">FS</div>
-                    <h3 class="font-bold">Felipe Santos</h3>
-                </div>
-                <div class="text-center">
-                    <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center text-white text-lg font-bold mx-auto mb-3">JC</div>
-                    <h3 class="font-bold">João Vitor Ceppo</h3>
-                </div>
+                <div class="text-center"><div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center text-white text-lg font-bold mx-auto mb-3">CR</div><h3 class="font-bold">Caio Ribeiro</h3></div>
+                <div class="text-center"><div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white text-lg font-bold mx-auto mb-3">FS</div><h3 class="font-bold">Filipe Santos</h3></div>
+                <div class="text-center"><div class="w-12 h-12 bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center text-white text-lg font-bold mx-auto mb-3">JC</div><h3 class="font-bold">João Vitor Ceppo</h3></div>
             </div>
         </section>
 
